@@ -424,9 +424,7 @@ const LibraryCreator = {
     }
 //////////////////////////////////////
   ]
-  
-  console.log('로딩성공!')
-  console.log('현재 버전은 0.0.1v 입니다.')
-
   LibraryCreator.start(blocks, 'API', '특급')
+
+  aleat('현재 버전은 0.0.1v 입니다.')
   
