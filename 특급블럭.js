@@ -426,5 +426,5 @@ const LibraryCreator = {
   ]
   LibraryCreator.start(blocks, 'API', '특급')
 
-  aleat('현재 버전은 0.0.1v 입니다.')
+  alert('현재 버전은 0.0.1v 입니다.')
   
