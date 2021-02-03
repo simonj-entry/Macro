@@ -388,7 +388,7 @@ const LibraryCreator = {
 //////////////////////////////////////
     {
       name: 'SearchNaver', // 블럭 이름 지정
-      template: '%1 내용을 네이버에 검색하기%2', // 표시할 내용
+      template: '%1 를(을) 네이버에 검색하기%2', // 표시할 내용
       skeleton: 'basic', // 블럭 형식(basic은 일반 블럭)
       color: { // 색깔
         default: '#e0ffff', //RGB 색깔
