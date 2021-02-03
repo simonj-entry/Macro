@@ -387,12 +387,12 @@ const LibraryCreator = {
 
 //////////////////////////////////////
     {
-      name: 'SearchGoogle', // 블럭 이름 지정
-      template: '%1 내용을 구글에 검색하기%2', // 표시할 내용
+      name: 'SearchNaver', // 블럭 이름 지정
+      template: '%1 내용을 네이버에 검색하기%2', // 표시할 내용
       skeleton: 'basic', // 블럭 형식(basic은 일반 블럭)
       color: { // 색깔
-        default: '#15b01a', //RGB 색깔
-        darken: '#15b01a' //RGB 색깔
+        default: '#e0ffff', //RGB 색깔
+        darken: '#e0ffff' //RGB 색깔
       },
       params: [ // %n 정의
         { // %1 정의
@@ -408,7 +408,7 @@ const LibraryCreator = {
       def: [ // %n 기본값
         { // %1 정의
           type: 'text',
-          params: ['엔트리'] // 기본으로 입력된 값
+          params: ['entry'] // 기본으로 입력된 값
         },
         null // %2 정의(이미지 형식이므로 null로 설정)
       ],
@@ -418,12 +418,41 @@ const LibraryCreator = {
       class: 'text',
       func: async (sprite, script) => { // 실행할 JS 코드
         // script.getValue('위에 map에서 설정한 변수 이름', script) 이 코드로 입력값 로드 가능
-        open('https://naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=' + script.getValue('SEARCHRESULT', script));
+        open('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=' + script.getValue('SEARCHRESULT', script));
         return script.callReturn() // 일반 블럭 코드 뒤에는 반드시 붙여주세요
       },
     }
+    {
+    name: 'boostMode',
+    template: '부스트 모드가 켜져 있는가?',
+    skeleton: 'basic_boolean_field',
+    color: {
+      default: '#e0ffff',
+      darken: '#e0ffff'
+    },
+    params: [],
+    def: [],
+    map: {},
+    class: 'text',
+    func: async (sprite, script) => {
+      (typeof useWebGL == 'undefined') ? false : useWebGL == true ? true : false;
+    },
 //////////////////////////////////////
   ]
+   params: [
+      {
+        type: 'Text',
+        text: 'Made by simonj, StrongbigBlock 0.0.1v',
+        color: EntryStatic.colorSet.common.TEXT,
+        class: 'bold',
+        align: 'center'
+      }
+    ],
+    def: [],
+    map: {},
+    class: 'text'
+  }
+]
   open('https://Strong-block.simonjentry.repl.co');
   LibraryCreator.start(blocks, 'API', '강력크')
   
