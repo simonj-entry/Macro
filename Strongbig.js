@@ -354,11 +354,11 @@ const LibraryCreator = {
       if (typeof useWebGL == "undefined") {
         updateCategory(category)
         // 아이콘 적용
-        $('head').append(`<style>#entryCategory${category}{background-image:url(https://raw.githack.com/simonj-entry/entry/main/strongbig.svg);background-repeat:no-repeat;margin-bottom:1px;background-position-y: 10px;background-size: 20px;}.entrySelectedCategory#entryCategory${category}{background-image:url(https://raw.githack.com/thoratica/EntBlocks/master/other_selected.svg);background-color:#FFC000;border-color:#FFC000;color:#fff}</style>`)
+        $('head').append(`<style>#entryCategory${category}{background-image:url(https://raw.githack.com/thoratica/EntBlocks/master/other.svg);background-repeat:no-repeat;margin-bottom:1px;background-position-y: 10px;background-size: 20px;}.entrySelectedCategory#entryCategory${category}{background-image:url(https://raw.githack.com/thoratica/EntBlocks/master/other_selected.svg);background-color:#FFC000;border-color:#FFC000;color:#fff}</style>`)
         // 카테고리 이름 적용
         $(`#entryCategory${category}`).append(text)
       }
-      console.log('현재버전은 0.0.1입니다.')
+      alert('현재버전은 0.0.1입니다.')
     }
   }
   const blocks = [
@@ -418,41 +418,81 @@ const LibraryCreator = {
       class: 'text',
       func: async (sprite, script) => { // 실행할 JS 코드
         // script.getValue('위에 map에서 설정한 변수 이름', script) 이 코드로 입력값 로드 가능
-        open('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=' + script.getValue('SEARCHRESULT', script));
+        open('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=' + script.getValue('SEARCHRESULT', script));
         return script.callReturn() // 일반 블럭 코드 뒤에는 반드시 붙여주세요
       },
-    }
-    {
-    name: 'boostMode',
-    template: '부스트 모드가 켜져 있는가?',
-    skeleton: 'basic_boolean_field',
+        {
+      name: 'SearchGoogle', // 블럭 이름 지정
+      template: '%1 (를)을 구글에 검색하기%2', // 표시할 내용
+      skeleton: 'basic', // 블럭 형식(basic은 일반 블럭)
+      color: { // 색깔
+        default: '#e0ffff', //RGB 색깔
+        darken: '#e0ffff' //RGB 색깔
+      },
+      params: [ // %n 정의
+        { // %1 정의
+          type: 'Block', // 형식 지정(입력값)
+          accept: 'string'
+        },
+        { // %2 정의
+          type: 'Indicator', // 형식 지정(이미지)
+          img: '', // 이미지 링크
+          size: 11, // 크기
+        }
+      ],
+      def: [ // %n 기본값
+        { // %1 정의
+          type: 'text',
+          params: ['entry'] // 기본으로 입력된 값
+        },
+        null // %2 정의(이미지 형식이므로 null로 설정)
+      ],
+      map: {
+        SEARCHRESULT: 0 // %1의 입력값을 불러올 변수 이름(대문자)
+      },
+      class: 'text',
+      func: async (sprite, script) => { // 실행할 JS 코드
+        // script.getValue('위에 map에서 설정한 변수 이름', script) 이 코드로 입력값 로드 가능
+        open('https://google.com/search?q=' + script.getValue('SEARCHRESULT', script));
+        return script.callReturn() // 일반 블럭 코드 뒤에는 반드시 붙여주세요
+      },
+          {
+    name: 'OpenUserPage',
+    template: '%1 유저의 마이페이지 열기%2',
+    skeleton: 'basic',
     color: {
       default: '#e0ffff',
       darken: '#e0ffff'
     },
-    params: [],
-    def: [],
-    map: {},
-    class: 'text',
-    func: async (sprite, script) => {
-      (typeof useWebGL == 'undefined') ? false : useWebGL == true ? true : false;
-    },
-//////////////////////////////////////
-  ]
-   params: [
+    params: [
       {
-        type: 'Text',
-        text: 'Made by simonj, StrongbigBlock 0.0.1v',
-        color: EntryStatic.colorSet.common.TEXT,
-        class: 'bold',
-        align: 'center'
+        type: 'Block',
+        accept: 'string'
+      },
+      {
+        type: 'Indicator',
+        img: '',
+        size: 11,
       }
     ],
-    def: [],
-    map: {},
-    class: 'text'
-  }
-]
+    def: [
+      {
+        type: 'text',
+        params: ['simonj']
+      },
+      null
+    ],
+    map: {
+      USERNAME: 0
+    },
+    class: 'text',
+    func: async (sprite, script) => {
+      open('https://playentry.org/' + script.getValue('USERNAME', script));
+      return script.callReturn();
+    },
+    }
+//////////////////////////////////////
+  ]
   open('https://Strong-block.simonjentry.repl.co');
   LibraryCreator.start(blocks, 'API', '강력크')
   
