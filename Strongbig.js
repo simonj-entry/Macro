@@ -396,8 +396,8 @@ const LibraryCreator = {
       },
       addBlock('entry_console_clear', '스폐셜블럭들을 만들사람은 john0817이고, 기타 블록 제작자는 또라띠까입니다.%1', {
                 color: EntryStatic.colorSet.block.default.HARDWAR,
-outerLine: EntryStatic.colorSet.block.darken.HARDWAR
-},
+                outerLine: EntryStatic.colorSet.block.darken.HARDWAR
+      },
       params: [ // %n 정의
         { // %1 정의
           type: 'Block', // 형식 지정(입력값)
