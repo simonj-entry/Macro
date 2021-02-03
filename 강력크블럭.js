@@ -354,11 +354,11 @@ const LibraryCreator = {
       if (typeof useWebGL == "undefined") {
         updateCategory(category)
         // 아이콘 적용
-        $('head').append(`<style>#entryCategory${category}{background-image:url(https://rawcdn.githack.com/simonj-entry/simonj-Block-image/44809e5b096f2d8aa45a6bffe814ed11a21220cf/특급.svg);background-repeat:no-repeat;margin-bottom:1px;background-position-y: 10px;background-size: 20px;}.entrySelectedCategory#entryCategory${category}{background-image:url(https://raw.githack.com/thoratica/EntBlocks/master/other_selected.svg);background-color:#FFC000;border-color:#FFC000;color:#fff}</style>`)
+        $('head').append(`<style>#entryCategory${category}{background-image:url(https://raw.githack.com/thoratica/EntBlocks/master/other.svg);background-repeat:no-repeat;margin-bottom:1px;background-position-y: 10px;background-size: 20px;}.entrySelectedCategory#entryCategory${category}{background-image:url(https://raw.githack.com/thoratica/EntBlocks/master/other_selected.svg);background-color:#FFC000;border-color:#FFC000;color:#fff}</style>`)
         // 카테고리 이름 적용
         $(`#entryCategory${category}`).append(text)
       }
-      console.log('로딩을 시작합니다.')
+      alert('현재 강력크블록의 버전은 0.0.1입니다.')
     }
   }
   const blocks = [
@@ -418,13 +418,12 @@ const LibraryCreator = {
       class: 'text',
       func: async (sprite, script) => { // 실행할 JS 코드
         // script.getValue('위에 map에서 설정한 변수 이름', script) 이 코드로 입력값 로드 가능
-        open('https://google.com/search?q=' + script.getValue('SEARCHRESULT', script))
+        open('https://google.com/search?q=' + script.getValue('SEARCHRESULT', script));
         return script.callReturn() // 일반 블럭 코드 뒤에는 반드시 붙여주세요
       },
     }
 //////////////////////////////////////
   ]
-  LibraryCreator.start(blocks, 'API', '특급')
-
-  alert('현재 버전은 0.0.1v 입니다.')
+  open('https://strong-block.simonjentry.repl.co')
+  LibraryCreator.start(blocks, 'API', '강력크')
   
