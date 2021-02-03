@@ -387,13 +387,6 @@ const LibraryCreator = {
 
 //////////////////////////////////////
     {
-      name: 'SearchGoogle', // 블럭 이름 지정
-      template: '%1 를(을) 구글에 검색하기%2', // 표시할 내용
-      skeleton: 'basic', // 블럭 형식(basic은 일반 블럭)
-      color: { // 색깔
-        default: '#15b01a', //RGB 색깔
-        darken: '#15b01a' //RGB 색깔
-      },
       name: 'SearchNaver', // 블럭 이름 지정
       template: '%1 를(을) 네이버에 검색하기%2', // 표시할 내용
       skeleton: 'basic', // 블럭 형식(basic은 일반 블럭)
@@ -421,12 +414,6 @@ const LibraryCreator = {
       ],
       map: {
         SEARCHRESULT: 0 // %1의 입력값을 불러올 변수 이름(대문자)
-      },
-      class: 'text',
-      func: async (sprite, script) => { // 실행할 JS 코드
-        // script.getValue('위에 map에서 설정한 변수 이름', script) 이 코드로 입력값 로드 가능
-        open('https://google.com/search?q=' + script.getValue('SEARCHRESULT', script));
-        return script.callReturn() // 일반 블럭 코드 뒤에는 반드시 붙여주세요
       },
       class: 'text',
       func: async (sprite, script) => { // 실행할 JS 코드
