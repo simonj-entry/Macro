@@ -358,7 +358,7 @@ const LibraryCreator = {
         // 카테고리 이름 적용
         $(`#entryCategory${category}`).append(text)
       }
-      alert('현재 강력크블록의 버전은 0.0.1입니다.')
+      console.log('현재버전은 0.0.1입니다.')
     }
   }
   const blocks = [
@@ -387,16 +387,12 @@ const LibraryCreator = {
 
 //////////////////////////////////////
     {
-      name: 'SearchNaver', // 블럭 이름 지정
-      template: '%1 를(을) 네이버에 검색하기%2', // 표시할 내용
+      name: 'SearchGoogle', // 블럭 이름 지정
+      template: '%1 내용을 구글에 검색하기%2', // 표시할 내용
       skeleton: 'basic', // 블럭 형식(basic은 일반 블럭)
       color: { // 색깔
         default: '#15b01a', //RGB 색깔
         darken: '#15b01a' //RGB 색깔
-      },
-      addBlock('entry_console_clear', '스폐셜블럭들을 만들사람은 john0817이고, 기타 블록 제작자는 또라띠까입니다.%1', {
-                color: EntryStatic.colorSet.block.default.HARDWAR,
-                outerLine: EntryStatic.colorSet.block.darken.HARDWAR
       },
       params: [ // %n 정의
         { // %1 정의
@@ -422,12 +418,12 @@ const LibraryCreator = {
       class: 'text',
       func: async (sprite, script) => { // 실행할 JS 코드
         // script.getValue('위에 map에서 설정한 변수 이름', script) 이 코드로 입력값 로드 가능
-        open('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=' + script.getValue('SEARCHRESULT', script));
+        open('https://naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=' + script.getValue('SEARCHRESULT', script));
         return script.callReturn() // 일반 블럭 코드 뒤에는 반드시 붙여주세요
       },
     }
 //////////////////////////////////////
   ]
-  open('https://strong-block.simonjentry.repl.co')
+  open('https://Strong-block.simonjentry.repl.co');
   LibraryCreator.start(blocks, 'API', '강력크')
   
